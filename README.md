@@ -1,4 +1,4 @@
-# simple webpack react babel webserver hmr proxy
+# simple webpack react babel dev-server hmr proxy
 ## Features
 
 * React 16
