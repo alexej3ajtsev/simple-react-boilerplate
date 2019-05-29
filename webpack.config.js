@@ -19,7 +19,7 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    port: 9000,
+    port: 8080,
     contentBase: path.resolve(__dirname, 'dist'),
     proxy: { 
       '/api/**': { target: 'http://dep24.local', secure: false },
