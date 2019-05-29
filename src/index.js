@@ -2,4 +2,4 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App/App'
 
-ReactDOM.render(<App />, document.getElementById('catalog-search'));
+ReactDOM.render(<App />, document.getElementById('calc'));

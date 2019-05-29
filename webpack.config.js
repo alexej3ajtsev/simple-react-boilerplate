@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -18,9 +19,10 @@ module.exports = {
   },
   devServer: {
     hot: true,
+    port: 9000,
     contentBase: path.resolve(__dirname, 'dist'),
     proxy: { 
-      '/api/**': { target: 'http://your.domain-or.ip', secure: false },
+      '/api/**': { target: 'http://dep24.local', secure: false },
     },
   },
   resolve: {
@@ -32,6 +34,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
+    new HtmlWebpackPlugin({template: 'index.html'}),    
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
