@@ -1,5 +1,5 @@
 {
-  "name": "simple webpack react babel webserver hmr proxy",
+  "name": "simple-react-bolilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.js",
