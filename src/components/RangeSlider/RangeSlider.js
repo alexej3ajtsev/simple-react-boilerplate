@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import Slider from 'react-rangeslider'
 import { onlyNumbers, compareValue } from '../../utils'
-import C from '../../config'
 import 'react-rangeslider/lib/index.css'
-import './RangeSlider.sass'
+import './RangeSlider.sass' 
 
-const RangeSlider = ({id, postfix="", format=f=>f, defValue=0, maxValue=100, minValue=0, title="{TITLE}", onChange = f=>f}) => {
+const RangeSlider = ({step=1, id, postfix="", format=f=>f, defValue=0, maxValue=100, minValue=0, title="{TITLE}", onChange = f=>f}) => {
     const [val, setVal] = useState(defValue)
     const labels = {[minValue]: format(minValue), [maxValue] : format(maxValue)}
     
@@ -43,6 +42,7 @@ const RangeSlider = ({id, postfix="", format=f=>f, defValue=0, maxValue=100, min
             </div>
             <div className="range-slider__wrapper">
                 <Slider
+                    step={step}
                     tooltip={true}
                     labels={labels}
                     format={format}

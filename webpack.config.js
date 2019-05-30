@@ -23,14 +23,25 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(svg|jpeg|jpg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'img/',
+            name: '[name].[ext]',
+          }
+        }
+      }
     ]
   },
   devServer: {
     hot: true,
     port: 8080,
     contentBase: path.resolve(__dirname, 'dist'),
-    proxy: { 
-      '/api/**': { target: 'http://dep24.local', secure: false },
+    proxy: {
+       '/api' : { target: 'http://localhost:3000', secure: false },
+      //'/api/**': { target: 'http://dep24.local', secure: false },
     },
   },
   resolve: {

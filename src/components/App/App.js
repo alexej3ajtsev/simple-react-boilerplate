@@ -1,33 +1,35 @@
-import React, {Component} from 'react';
-//import { TransitionGroup } from 'react-transition-group'
+import React, {Component} from 'react'
+import img from '../../img/CALC.svg'
 import { formatMoney, onlyNumbers } from '../../utils'
+
+import CallbackForm from '../CallbackForm/CallbackForm'
+import Summary from '../Summary/Summary'
 import RangeSlider from '../RangeSlider/RangeSlider'
 import './App.sass'
 import C from '../../config'
 
-const Summary = ({loan, payment, percents}) => {
-    return(
-        <div>Summary</div>
-    )
-}
-
 class App extends Component {
     constructor(props) {
         super(props)
-        this.state = {
+
+        this.carPriceHandle = this.carPriceHandle.bind(this)
+        this.termsHandle = this.termsHandle.bind(this)
+        this.getPercents = this.getPercents.bind(this) 
+        this.getPayment = this.getPayment.bind(this) 
+
+        const loan = formatMoney( C.DEFAULT_PRICE * C.LOAN_PART)
+        const percents = this.getPercents(C.DEFAULT_PRICE)
+
+        this.state = { 
             loanCalc: 'loanCalc',
             showInfo: false,
             message: null,
             carPrice: C.DEFAULT_PRICE,
             terms: C.DEFAULT_TERMS,
-            loan: formatMoney( C.DEFAULT_PRICE * C.LOAN_PART),
-            payment: null,
-            percents: this.getPercents(C.DEFAULT_PRICE)
+            loan,
+            payment: this.getPayment(loan, C.DEFAULT_TERMS, percents),
+            percents
         }
-        this.carPriceHandle = this.carPriceHandle.bind(this)
-        this.termsHandle = this.termsHandle.bind(this)
-        this.getPercents = this.getPercents.bind(this) 
-        this.getPayment = this.getPayment.bind(this) 
     }
 
     getPercents(carPrice) {
@@ -56,7 +58,7 @@ class App extends Component {
         return formatMoney(parseInt(payment))
     }
     carPriceHandle(carPrice) {
-        const loan = formatMoney( carPrice * C.LOAN_PART)
+        const loan = formatMoney( parseInt(carPrice * C.LOAN_PART))
         const percents = this.getPercents(carPrice)
          
         this.setState(state => ({
@@ -82,26 +84,19 @@ class App extends Component {
         const {carPrice, terms, loan, percents, payment} = this.state
 
         return <div className="loan-calc">
-            <p style={{color: '#fff'}}> 
-                Сумма залога: {loan}
-            </p>
-            <p>
-                Платеж {`${payment}`}
-            </p>
-            <p style={{color: '#fff'}}> 
-                Цена: {carPrice} ({percents}%)
-            </p>
-            <p style={{color: '#fff'}}> 
-                Срок: {terms}
-            </p>
+            <h3 className="loan-calc__title">
+                <img src={img} alt=""/>
+                &nbsp;Раcчет займа
+            </h3>
             <RangeSlider
                 id="priceInput"
                 postfix="₽"
                 defValue={carPrice}
-                title={'Стоимость авто'}
+                title={'Стоимость имущества'}
                 maxValue={C.MAX_PRICE}
                 minValue={C.MIN_PRICE}
                 format={formatMoney}
+                step={10000 }
                 onChange={this.carPriceHandle}
             />
             <RangeSlider
@@ -113,7 +108,12 @@ class App extends Component {
                 minValue={C.MIN_TERMS}
                 onChange={this.termsHandle}
             />
-            <Summary/>
+            <Summary
+                loan={loan}
+                payment={payment}
+                percents={percents}
+            />
+            <CallbackForm reqData={this.state}/>
         </div>
     }
 }

@@ -1,0 +1,43 @@
+.loan-form__wrapper
+    display: grid
+    grid-template-columns: auto auto
+    grid-gap: .4rem
+    input[type=submit],
+    input[type=tel]
+        border-radius: .3rem
+        border: none 
+        height: 3.2rem
+        margin: 0
+        padding: .4rem 1rem
+        font: unset
+        font-family: PTSans-Bold, sans-serif
+        font-weight: 700
+        box-sizing: border-box
+    input[type=tel]
+        background-color: lighten(#2c3e54eb, 5%)
+        color: #fff
+        font-size: 1.2rem
+        &::placeholder
+            color: darken(#fff, 10%)
+
+    input[type=submit]
+        font-size: 1.2rem
+        background-color: transparent 
+        color: #61E166
+        border: 2px solid #61E166
+        &:hover
+            color: darken(#61E166, 10%)
+            border: 2px solid darken(#61E166, 10%)
+
+.loan-privacy a
+    color: #FFCC00
+
+
+.loan-form
+    position: relative
+.loan-order__status
+    position: absolute
+    width: 100%
+    height: 100%
+    background-color: red
+    z-index: 1
