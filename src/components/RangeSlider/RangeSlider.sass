@@ -1,0 +1,96 @@
+.range-slider
+    color: #fff
+    margin-top: 2rem
+    padding-bottom: 1rem
+    border-bottom: 1px solid rgba(255, 255, 255, .2)
+    margin-bottom: 1rem
+
+    &:first-of-type
+        margin-top: 0
+
+.rangeslider__handle::after
+    display: none
+
+.rangeslider__label-item
+    white-space: nowrap
+    font-family: PTSans-Bold, sans-serif
+    &:last-of-type
+        padding-left: 2rem
+    &:first-of-type
+        padding-right: 4rem
+
+.range-slider__header-row
+    display: grid
+    grid-template-columns: repeat(2, auto)
+    grid-gap: 2rem
+    font-family: PTSans-Bold, sans-serif
+    font-weight: 700
+    input
+        background-color: transparent
+        border: none
+        font-family: PTSans-Bold, sans-serif
+        font-weight: 700
+        width: 80%
+        font: unset
+        &:focus
+            outline: none
+        
+    label
+        width: 20%  
+    label,
+    input
+        text-align: right
+        display: inline-block
+        margin: 0
+        padding: 0
+        color: #FBD300
+
+.range-slider__header,
+.range-slider__input
+    margin: 1rem 0
+    font-size: 1.4rem
+
+
+
+.rangeslider-horizontal .rangeslider__handle
+    width: 1.65rem
+    height: 1.65rem
+
+.rangeslider-horizontal .rangeslider__handle-tooltip
+    color: #222
+    background-color: #fff
+    height: 1.4rem
+    top: 2.2rem
+    line-height: 1.4rem
+    white-space: nowrap    
+    width: auto
+    padding: .1rem .6rem
+    border: none
+    span
+        margin-top: 0
+    &:focus
+        outline: none
+    &::after
+        position: absolute
+        content: ''
+        width: 0
+        height: 0
+        top: -4px
+        border-style: solid
+        border-width: 0 4px 4px 4px
+        border-color: transparent transparent #ffffff transparent
+        &:focus
+            outline: none
+
+.rangeslider
+    position: relative
+    margin-top: 2.5rem    
+    background-color: #ffffff!important
+    
+.rangeslider,
+.rangeslider .rangeslider__fill
+    height: .3rem
+    background-color: #FFCC00
+
+.rangeslider__labels
+    top: -3.5rem
