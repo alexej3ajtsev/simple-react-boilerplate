@@ -22,8 +22,6 @@ class App extends Component {
 
         this.state = { 
             loanCalc: 'loanCalc',
-            showInfo: false,
-            message: null,
             carPrice: C.DEFAULT_PRICE,
             terms: C.DEFAULT_TERMS,
             loan,

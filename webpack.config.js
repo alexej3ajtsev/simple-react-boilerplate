@@ -40,8 +40,15 @@ module.exports = {
     port: 8080,
     contentBase: path.resolve(__dirname, 'dist'),
     proxy: {
-       '/api' : { target: 'http://localhost:3000', secure: false },
-      //'/api/**': { target: 'http://dep24.local', secure: false },
+      '/api/**' : {
+      target: {
+        "host": "dep24.local",
+        "protocol": 'http:',
+        "port": 80
+      },
+      ignorePath: true,
+      changeOrigin: true,
+      secure: false },
     },
   },
   resolve: {
@@ -50,7 +57,7 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'calc.js'
   },
   plugins: [
     new HtmlWebpackPlugin({template: 'index.html'}),    
